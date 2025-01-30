@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thenux-INSTA-DL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Thenux-INSTA-DL</h1>
+        <button id="themeToggle">Toggle Dark Mode</button>
+        <input type="text" id="instaUrl" placeholder="Enter Instagram Video URL">
+        
+        <!-- New options for video quality -->
+        <label for="videoQuality">Select Video Quality:</label>
+        <select id="videoQuality">
+            <option value="high">High Quality</option>
+            <option value="medium">Medium Quality</option>
+            <option value="low">Low Quality</option>
+        </select>
+        
+        <button id="downloadBtn">Download</button>
+        <button id="newsBtn">News</button> <!-- New News button -->
+        <div id="loading" class="hidden">Loading...</div>
+        <div id="result"></div>
+        
+        <!-- New section for playing songs -->
+        <h2>Play Songs</h2>
+        <label for="songSelect">Select a song:</label>
+        <select id="songSelect">
+            <option value="Lauv - I Like Me Better [Official Video].mp3">I Like Me Better</option>
+            <option value="Shawn Mendes - Treat You Better.mp3">FOR YOU - INU😞</option>
+            <option value="Travis Scott - FE!N ft. Playboi Carti.mp3">  FE!N</option>
+        </select>
+        <button id="playSongBtn">Play Song</button>
+        <button id="pauseSongBtn">Pause Song</button> <!-- New Pause button -->
+        <button id="skipSongBtn">Skip Song</button> <!-- New Skip button -->
+        
+        <div id="loading" class="hidden">Loading...</div>
+        <div id="result"></div>
+    </div>
+    <footer>
+        <p>Thenux-AI</p>
+    </footer>
+    <script src="script.js"></script>
+    <script> document.getElementById('newsBtn').addEventListener('click', function() {
+        window.location.href = 'news.html';
+    });</script>
+</body>
+</html>

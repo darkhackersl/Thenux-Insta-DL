@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Thenux-AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Latest News</h1>
+        <div id="newsContainer"></div>
+        <button id="backBtn">Back to Home</button>
+    </div>
+    <footer>
+        <p>Thenux-AI</p>
+    </footer>
+    <script>
+        // Fetch news from the API
+        fetch('https://vajira-api.vercel.app/news/bbc')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status) {
+                    const newsContainer = document.getElementById('newsContainer');
+                    const newsItem = data.result;
+                    newsContainer.innerHTML = `
+                        <h2 class="glow">${newsItem.title}</h2>
+                        <img src="${newsItem.image}" alt="News Image" class="fade-in">
+                        <p class="fade-in">${newsItem.desc}</p>
+                        <a href="${newsItem.url}" target="_blank">Read more</a>
+                    `;
+                } else {
+                    document.getElementById('newsContainer').innerHTML = '<p>Failed to load news.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching news:', error);
+                document.getElementById('newsContainer').innerHTML = '<p>Error fetching news.</p>';
+            });
+
+        // Back button functionality
+        document.getElementById('backBtn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
