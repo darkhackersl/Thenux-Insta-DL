@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thenux-LOGO</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Your Logo</h1>
+        <input type="text" id="logoName" placeholder="Enter Name">
+        <input type="text" id="logoLink" placeholder="Enter Image Link">
+        <button id="generateLogoBtn">Generate Logo</button>
+        <div id="logoContainer"></div>
+        
+        <div id="availableLogos">
+            <h2>Available Logo Links</h2>
+            <ul>
+                <li>
+                    <a href="https://en.ephoto360.com/create-glowing-text-effects-online-706.html" target="_blank">Deadpool Style Logo</a>
+                    <button class="copyLinkBtn">Copy Link</button>
+                </li>
+                <li>
+                    <a href="https://en.ephoto360.com/create-a-blackpink-style-logo-with-members-signatures-810.html" target="_blank">Blackpink Style Logo</a>
+                    <button class="copyLinkBtn">Copy Link</button>
+                </li>
+                <li>
+                    <a href="https://en.ephoto360.com/metal-star-text-online-109.html" target="_blank">Viettel Logo</a>
+                    <button class="copyLinkBtn">Copy Link</button>
+                </li>
+                <li>
+                    <a href="https://en.ephoto360.com/create-your-own-logo-123.html" target="_blank">Create Your Own Logo</a>
+                    <button class="copyLinkBtn">Copy Link</button>
+                </li>
+                <li>
+                    <a href="https://en.ephoto360.com/logo-creator-456.html" target="_blank">Logo Creator</a>
+                    <button class="copyLinkBtn">Copy Link</button>
+                </li>
+            </ul>
+        </div>
+        
+        <button id="backBtn">Back to Home</button>
+        <div id="tips" class="hidden">Tips: Enter a name and link to generate a logo. You can get links use this web . : https://en.ephoto360.com</div>
+    </div>
+    <footer>
+        <p>Thenux-AI</p>
+    </footer>
+    <script>
+        document.getElementById('generateLogoBtn').addEventListener('click', function() {
+            const name = document.getElementById('logoName').value;
+            const link = document.getElementById('logoLink').value;
+            if (!name || !link) {
+                alert('Please enter both a name and a link.');
+                return;
+            }
+
+            // Show tips
+            document.getElementById('tips').classList.remove('hidden');
+
+            // Call the logo generation API
+            fetch(`https://bk9.fun/maker/ephoto-1?text=${encodeURIComponent(name)}&url=${encodeURIComponent(link)}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status) {
+                        const logoContainer = document.getElementById('logoContainer');
+                        logoContainer.innerHTML = `
+                            <img src="${data.BK9}" alt="Generated Logo">
+                            <a href="${data.BK9}" download="logo.png">Download Image</a>
+                        `;
+                    } else {
+                        document.getElementById('logoContainer').innerHTML = '<p>Failed to generate logo.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('logoContainer').innerHTML = '<p>Error generating logo.</p>';
+                });
+        });
+
+        // Back button functionality
+        document.getElementById('backBtn').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Copy link functionality
+        document.querySelectorAll('.copyLinkBtn').forEach(button => {
+            button.addEventListener('click', function() {
+                const link = this.previousElementSibling.href; // Get the link from the anchor tag
+                navigator.clipboard.writeText(link).then(() => {
+                    alert('Link copied to clipboard!');
+                }).catch(err => {
+                    console.error('Error copying link:', err);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
