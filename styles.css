@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1, #a1c4fd, #c2e9fb);
+    background: linear-gradient(45deg, #5a63df, #d45735, #ffdde1, #a1c4fd, #112129);
     background-size: 400% 400%;
     animation: gradientBG 10s ease infinite;
     transition: background-color 0.3s;
@@ -107,3 +107,20 @@ footer {
     50% { transform: scale(0.95); }
     100% { transform: scale(1); }
 }
+
+/* New styles for news items */
+.glow {
+    color: #d44532;
+    text-shadow: 0 0 10px #5c5b57, 0 0 20px #55268b;
+    animation: glow-animation 1.5s infinite alternate;
+}
+
+@keyframes glow-animation {
+    from {
+        text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    }
+    to {
+        text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffcc00;
+    }
+}
+
